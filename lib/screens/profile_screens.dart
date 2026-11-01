@@ -1,77 +1,50 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // Wajib diimport untuk berinteraksi dengan Provider
-import 'package:wisata_candi/widget/profile_info_item.dart';
-// Import semua provider dan screen yang dibutuhkan untuk sinkronisasi data
+import 'package:provider/provider.dart';
 import 'package:wisata_candi/providers/auth_providers.dart';
 import 'package:wisata_candi/providers/favorite_providers.dart';
-import 'package:wisata_candi/providers/theme_provider.dart';
 import 'package:wisata_candi/screens/sign_in_screen.dart';
 
-class ProfileScreen extends StatelessWidget {
+class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
 
   @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  String fullName = 'qilfou';
+
+  @override
   Widget build(BuildContext context) {
-    // 1. Mendengarkan seluruh perubahan data dari masing-masing Provider
-    final auth = context.watch<AuthProvider>();
+    // Membaca data dari Provider di dalam method build
     final favoriteCount = context.watch<FavoriteProvider>().count;
-    final themeProvider = context.watch<ThemeProvider>();
+    final auth = context.watch<AuthProvider>();
 
     return Scaffold(
-      // Properti ini membuat body naik ke atas melewati batas AppBar sehingga visual background ungu menyatu sempurna
-      extendBodyBehindAppBar: true,
-
-      // Kustomisasi AppBar agar tombol dan teksnya berwarna putih terang
-      appBar: AppBar(
-        title: const Text('Profil Pengguna'),
-        backgroundColor: Colors.transparent, // Transparan agar warna Container ungu memancar dari belakang
-        elevation: 0,
-        iconTheme: const IconThemeData(
-          color: Colors.white,
-        ), // Membuat tombol panah back menjadi PUTIH
-        titleTextStyle: const TextStyle(
-          color:
-              Colors.white, // Membuat judul menjadi PUTIH agar terlihat jelas
-          fontSize: 20,
-          fontWeight: FontWeight.bold,
-        ),
-        actions: [
-          IconButton(
-            icon: Icon(
-              themeProvider.isDark ? Icons.light_mode : Icons.dark_mode,
-              color: Colors.white, // Membuat tombol dark mode menjadi PUTIH
-            ),
-            onPressed: () {
-              context.read<ThemeProvider>().toggleTheme();
-            },
-          ),
-        ],
-      ),
       body: Stack(
         children: [
-          // Latar belakang balok warna ungu di area atas profil
+          // Background ungu bagian atas
           Container(
-            height: 220, // Ketinggian disesuaikan untuk mengakomodasi wilayah AppBar kustom
+            height: 200,
             width: double.infinity,
             color: Colors.deepPurple,
           ),
-          SingleChildScrollView(
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
             child: Column(
               children: [
-                // 2. Membuat widget untuk menampilkan foto profil bulat
+                // Header Foto Profil
                 Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: const EdgeInsets.only(
-                      top: 130, // Jarak disesuaikan ulang agar lingkaran foto pas menggantung di batas ungu
-                    ),
+                    padding: const EdgeInsets.only(top: 200 - 50),
                     child: Stack(
                       alignment: Alignment.bottomRight,
                       children: [
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Colors.white, // Border diganti PUTIH agar kontras dengan warna dasar ungu
+                              color: Colors.deepPurple,
                               width: 2,
                             ),
                             shape: BoxShape.circle,
@@ -84,18 +57,11 @@ class ProfileScreen extends StatelessWidget {
                           ),
                         ),
                         if (auth.isSignedIn)
-                          Container(
-                            decoration: const BoxDecoration(
-                              color: Colors.deepPurple,
-                              shape: BoxShape.circle,
-                            ),
-                            child: const Padding(
-                              padding: EdgeInsets.all(4.0),
-                              child: Icon(
-                                Icons.camera_alt,
-                                color: Colors.white,
-                                size: 20,
-                              ),
+                          IconButton(
+                            onPressed: () {},
+                            icon: Icon(
+                              Icons.camera_alt,
+                              color: Colors.deepPurple[50],
                             ),
                           ),
                       ],
@@ -104,72 +70,119 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 const SizedBox(height: 20),
 
-                // 3. Menampilkan bagian informasi profil menggunakan data Provider
-                // Latihan Mandiri 1: Mengambil nilai username langsung dari AuthProvider
-                ProfileInfoItem(
-                  icon: Icons.lock,
-                  label: 'Pengguna',
-                  value: auth.isSignedIn ? auth.username : 'Belum Sign In',
-                  iconColor: Colors.amber,
+                // Baris 1: Pengguna (Username dari AuthProvider)
+                Row(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 3,
+                      child: const Row(
+                        children: [
+                          Icon(Icons.lock, color: Colors.amber),
+                          SizedBox(width: 8),
+                          Text(
+                            'Pengguna',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        ': ${auth.isSignedIn ? auth.username : ''}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ],
                 ),
-                const SizedBox(height: 8),
-                const Divider(color: Colors.grey, thickness: 0.5),
-
-                ProfileInfoItem(
-                  icon: Icons.person,
-                  label: 'Nama',
-                  value: auth.isSignedIn
-                      ? auth.username
-                      : '', // Menggunakan username sebagai nama tampilan
-                  showEditIcon: auth.isSignedIn,
-                  onEditPressed: () => debugPrint('Icon edit ditekan'),
-                  iconColor: Colors.blue,
-                ),
-                const SizedBox(height: 8),
-                const Divider(color: Colors.grey, thickness: 0.5),
-
-                // Menampilkan jumlah total favorit candi secara real-time dari FavoriteProvider
-                ProfileInfoItem(
-                  icon: Icons.favorite,
-                  label: 'Favorit',
-                  value: favoriteCount > 0 ? '$favoriteCount' : '0',
-                  iconColor: Colors.red,
-                ),
-
-                // 4. Membuat bagian tombol aksi Sign Out / Sign In dinamis
                 const SizedBox(height: 4),
-                const Divider(color: Colors.grey, thickness: 0.5),
+                Divider(color: Colors.deepPurple[100]),
+                const SizedBox(height: 4),
+
+                // Baris 2: Nama
+                Row(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 3,
+                      child: const Row(
+                        children: [
+                          Icon(Icons.person, color: Colors.blue),
+                          SizedBox(width: 8),
+                          Text(
+                            'Nama',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        ': ${auth.isSignedIn ? fullName : ''}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                    if (auth.isSignedIn) const Icon(Icons.edit),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Divider(color: Colors.deepPurple[100]),
+                const SizedBox(height: 4),
+
+                // Baris 3: Favorit (Membaca jumlah favorit dari FavoriteProvider)
+                Row(
+                  children: [
+                    SizedBox(
+                      width: MediaQuery.of(context).size.width / 3,
+                      child: const Row(
+                        children: [
+                          Icon(Icons.favorite, color: Colors.red),
+                          SizedBox(width: 8),
+                          Text(
+                            'Favorit',
+                            style: TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Expanded(
+                      child: Text(
+                        ': ${favoriteCount > 0 ? favoriteCount : 0}',
+                        style: const TextStyle(fontSize: 18),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 4),
+                Divider(color: Colors.deepPurple[100]),
                 const SizedBox(height: 20),
 
+                // Tombol Sign Out / Sign In
                 auth.isSignedIn
                     ? TextButton(
                         onPressed: () {
-                          // Latihan Mandiri 2 & 3: Saat Sign Out, hapus semua favorit & ubah status autentikasi
-                          context.read<FavoriteProvider>().clearAll();
                           context.read<AuthProvider>().signOut();
+                          context.read<FavoriteProvider>().clearAll();
                         },
-                        child: const Text(
-                          'Sign Out',
-                          style: TextStyle(color: Colors.red, fontSize: 16),
-                        ),
+                        child: const Text('Sign Out'),
                       )
                     : TextButton(
                         onPressed: () {
-                          // Berpindah ke halaman SignInScreen ketika tombol Sign In ditekan
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (_) => const SignInScreen(),
+                              builder: (context) => const SignInScreen(),
                             ),
                           );
                         },
-                        child: const Text(
-                          'Sign In',
-                          style: TextStyle(
-                            color: Colors.deepPurple,
-                            fontSize: 16,
-                          ),
-                        ),
+                        child: const Text('Sign In'),
                       ),
               ],
             ),

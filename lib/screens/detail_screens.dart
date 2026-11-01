@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart'; // Wajib diimport untuk mengakses context.watch & context.read
+import 'package:provider/provider.dart';
+
+import '../providers/favorite_providers.dart';
+
 import 'package:wisata_candi/models/candi.dart';
 import 'package:cached_network_image/cached_network_image.dart';
-
-// Import provider dan profile screen untuk keperluan integrasi state management
-import 'package:wisata_candi/providers/favorite_providers.dart';
-import 'package:wisata_candi/screens/profile_screens.dart';
 
 class DetailScreen extends StatelessWidget {
   final Candi candi;
@@ -13,7 +12,7 @@ class DetailScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // 1. Membaca sekaligus mendengarkan status favorit dari FavoriteProvider menggunakan watch
+    // 1. Membaca status favorit dari FavoriteProvider
     final isFav = context.watch<FavoriteProvider>().isFavorite(candi.name);
 
     return Scaffold(
@@ -23,7 +22,7 @@ class DetailScreen extends StatelessWidget {
             // DetailHeader
             Stack(
               children: [
-                // Gambar utama
+                // 1. Gambar utama
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   child: ClipRRect(
@@ -36,7 +35,7 @@ class DetailScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                // Tombol back kustom
+                // 2. Tombol back
                 Padding(
                   padding: const EdgeInsets.symmetric(
                     horizontal: 16,
@@ -47,21 +46,10 @@ class DetailScreen extends StatelessWidget {
                       color: Colors.deepPurple[100]?.withValues(alpha: 0.8),
                       shape: BoxShape.circle,
                     ),
-                    child: // Cari bagian IconButton untuk tombol back kustom di dalam Stack:
-                    IconButton(
+                    child: IconButton(
                       onPressed: () {
-                        // CEK: Hanya lakukan pop jika ada halaman di antrean sebelumnya
                         if (Navigator.canPop(context)) {
                           Navigator.pop(context);
-                        } else {
-                          // Opsional: Tampilkan pesan pemberitahuan jika Anda mau
-                          ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(
-                              content: Text(
-                                'Anda sudah berada di halaman utama',
-                              ),
-                            ),
-                          );
                         }
                       },
                       icon: const Icon(Icons.arrow_back),
@@ -70,6 +58,7 @@ class DetailScreen extends StatelessWidget {
                 ),
               ],
             ),
+
             // DetailInfo
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -77,7 +66,8 @@ class DetailScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const SizedBox(height: 16),
-                  // Info atas
+
+                  // Info atas: nama + favorit
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -88,10 +78,9 @@ class DetailScreen extends StatelessWidget {
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                      // 2. Tombol Favorit yang terhubung dengan state management Provider
+                      // 2. Tombol Favorit terhubung ke Provider
                       IconButton(
                         onPressed: () {
-                          // Menggunakan read untuk memanggil aksi toggle tanpa mendengarkan widget tree secara berkala
                           context.read<FavoriteProvider>().toggle(candi.name);
                         },
                         icon: Icon(
@@ -101,6 +90,7 @@ class DetailScreen extends StatelessWidget {
                       ),
                     ],
                   ),
+
                   // Info tengah
                   const SizedBox(height: 16),
                   Row(
@@ -114,7 +104,7 @@ class DetailScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Expanded(child: Text(': ${candi.location}')),
+                      Text(': ${candi.location}'),
                     ],
                   ),
                   Row(
@@ -128,7 +118,7 @@ class DetailScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Expanded(child: Text(': ${candi.built}')),
+                      Text(': ${candi.built}'),
                     ],
                   ),
                   Row(
@@ -142,13 +132,15 @@ class DetailScreen extends StatelessWidget {
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
                       ),
-                      Expanded(child: Text(': ${candi.type}')),
+                      Text(': ${candi.type}'),
                     ],
                   ),
+
                   // Pemisah
                   const SizedBox(height: 16),
                   Divider(color: Colors.deepPurple.shade100),
                   const SizedBox(height: 16),
+
                   // Info bawah
                   const Text(
                     'Deskripsi',
@@ -159,6 +151,7 @@ class DetailScreen extends StatelessWidget {
                 ],
               ),
             ),
+
             // DetailGallery
             Padding(
               padding: const EdgeInsets.all(16),
@@ -221,17 +214,6 @@ class DetailScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
-      // 3. Tombol Uji Sementara (Berdasarkan materi slide halaman 19) untuk membuka layar profil
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (_) => const ProfileScreen()),
-          );
-        },
-        backgroundColor: Colors.deepPurple[100],
-        child: const Icon(Icons.person, color: Colors.deepPurple),
       ),
     );
   }

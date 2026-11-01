@@ -1,258 +1,154 @@
 import 'package:wisata_candi/models/candi.dart';
+
 var candiList = [
   Candi(
     name: 'Candi Borobudur',
     location: 'Magelang, Jawa Tengah',
-    description:
-        'Candi Borobudur adalah candi Buddha terbesar di dunia dan monumen '
-        'yang paling banyak dikunjungi di Indonesia. Candi ini dibangun pada '
-        'masa Dinasti Syailendra antara akhir abad ke-8 hingga awal abad ke-9 '
-        'dari batu andesit yang disusun tanpa perekat. Bangunannya terdiri '
-        'atas sembilan teras: enam berbentuk persegi dan tiga berbentuk '
-        'bundar, dengan sebuah stupa induk di puncak yang dikelilingi 72 '
-        'stupa berlubang berisi arca Buddha. Dindingnya dihiasi 2.672 panel '
-        'relief, termasuk 1.460 panel yang menceritakan kisah kehidupan '
-        'Buddha dan ajaran Buddha. Pengunjung berjalan mengelilingi candi '
-        'searah jarum jam sambil naik dari satu teras ke teras berikutnya, '
-        'yang melambangkan perjalanan menuju pencerahan. Setelah ditinggalkan '
-        'dan tertimbun abu vulkanik serta hutan selama berabad-abad, candi '
-        'ini kembali dikenal dunia pada tahun 1814. Pemugaran besar bersama '
-        'UNESCO dilakukan pada tahun 1975 sampai 1982, dan pada tahun 1991 '
-        'Borobudur ditetapkan sebagai Situs Warisan Dunia. Hingga kini candi '
-        'ini menjadi pusat perayaan Waisak setiap tahun.',
-    built: 'Abad ke-8 sampai ke-9',
+    description: 'Candi Borobudur, candi Buddha terbesar di dunia, dibangun oleh penganut Buddha Mahayana pada abad ke-9 di Jawa Tengah, Indonesia. Dengan enam teras dan tiga pelataran melingkar yang dihiasi relief dan arca Buddha, Borobudur adalah tempat suci untuk memuliakan Buddha dan panduan ziarah menuju pencerahan. Meskipun ditinggalkan pada abad ke-10, candi ini ditemukan kembali pada tahun 1814 dan setelah pemugaran besar-besaran, diakui sebagai Situs Warisan Dunia oleh UNESCO.',
+    built: 'Abad ke-9',
     type: 'Candi Buddha',
     imageAsset: 'images/borobudur.jpeg',
     imageUrls: [
-      'https://picsum.photos/id/1015/400/400',
-      'https://picsum.photos/id/1016/400/400',
-      'https://picsum.photos/id/1018/400/400',
+      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/4f/71/borobudur-and-the-sky.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/5d/36/borobudur-airial-view.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/4d/c7/borobudur-and-the-sky.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/47/0e/borobudur-sunset-moment.jpg',
     ],
-  ),
-  Candi(
-    name: 'Candi Prambanan',
-    location: 'Sleman, Yogyakarta',
-    description:
-        'Candi Prambanan adalah kompleks candi Hindu terbesar di Indonesia '
-        'yang dibangun pada abad ke-9, pada masa Kerajaan Mataram Kuno. '
-        'Kompleks ini didedikasikan untuk Trimurti, yaitu tiga dewa utama '
-        'dalam agama Hindu: Brahma sebagai pencipta, Wisnu sebagai pemelihara, '
-        'dan Siwa sebagai pelebur. Candi Siwa menjadi bangunan utama yang '
-        'paling tinggi, sekitar 47 meter, dan diapit oleh Candi Brahma dan '
-        'Candi Wisnu. Di depannya berdiri tiga candi kecil untuk wahana '
-        'ketiga dewa, serta ratusan candi perwara yang mengelilingi area '
-        'pusat. Dinding bagian dalam pagar candi memuat relief kisah '
-        'Ramayana yang dibaca berurutan searah jarum jam. Kisah yang sama '
-        'dipentaskan dalam pertunjukan Sendratari Ramayana di panggung '
-        'terbuka dekat candi. Prambanan pernah rusak oleh gempa Yogyakarta '
-        'tahun 2006 dan ditetapkan UNESCO sebagai Situs Warisan Dunia pada '
-        'tahun 1991.',
-    built: 'Abad ke-9',
-    type: 'Candi Hindu',
-    imageAsset: 'images/prambanan.jpeg',
-    imageUrls: [
-      'https://picsum.photos/id/1025/400/400',
-      'https://picsum.photos/id/1035/400/400',
-      'https://picsum.photos/id/1036/400/400',
-    ],
-  ),
-  Candi(
-    name: 'Candi Singosari',
-    location: 'Malang, Jawa Timur',
-    description:
-        'Candi Singosari terletak di Kecamatan Singosari, Kabupaten Malang, '
-        'dan berkaitan erat dengan Raja Kertanegara, raja terakhir '
-        'Kerajaan Singasari yang wafat pada tahun 1292. Candi ini diperkirakan '
-        'dibangun sekitar tahun 1300 sebagai tempat pendharmaan bagi sang '
-        'raja. Bentuknya ramping dan menjulang tinggi di atas kaki candi '
-        'yang polos, tanpa relief pada dindingnya. Candi ini sering '
-        'disebut bercorak Siwa-Buddha, sesuai dengan keyakinan Kertanegara '
-        'yang memadukan kedua ajaran. Di sekitar candi ditemukan sejumlah '
-        'arca besar, seperti Durga Mahisasuramardini, Ganesha, dan '
-        'Nandiswara, yang sebagian kini disimpan di museum di Belanda. '
-        'Karena bentuknya yang khas, Candi Singosari menjadi salah satu '
-        'contoh penting seni bangunan candi masa Jawa Timur.',
-    built: 'Sekitar tahun 1300',
-    type: 'Candi Hindu-Buddha',
-    imageAsset: 'images/singosari.jpeg',
-    imageUrls: [
-      'https://picsum.photos/id/1039/400/400',
-      'https://picsum.photos/id/1043/400/400',
-      'https://picsum.photos/id/1044/400/400',
-    ],
-  ),
-  Candi(
-    name: 'Candi Jago',
-    location: 'Malang, Jawa Timur',
-    description:
-        'Candi Jago terletak di Desa Tumpang, Kabupaten Malang. Candi ini '
-        'dibangun untuk mendharmakan Raja Wisnuwardhana dari Kerajaan '
-        'Singasari yang wafat pada tahun 1268, dan pembangunannya '
-        'diperkirakan terjadi pada masa Majapahit sekitar tahun 1343. '
-        'Bangunannya bertingkat dengan teras yang makin ke atas makin '
-        'kecil, dan bagian atasnya sebagian sudah tidak utuh. Keunikan '
-        'Candi Jago ada pada reliefnya yang menceritakan kisah-kisah '
-        'seperti Kunjarakarna, Parthayajna, dan cerita binatang Tantri, '
-        'dengan tokoh yang digambarkan menyerupai gaya wayang. Candi ini '
-        'bercorak Hindu-Buddha, dan beberapa arcanya menggambarkan dewa '
-        'Buddha maupun Hindu. Karena relief dan gaya seninya yang khas, '
-        'Candi Jago menjadi sumber penting untuk mempelajari seni dan '
-        'kepercayaan pada masa Jawa Timur.',
-    built: 'Abad ke-13 sampai ke-14',
-    type: 'Candi Hindu-Buddha',
-    imageAsset: 'images/jago.jpeg',
-    imageUrls: [
-      'https://picsum.photos/id/1047/400/400',
-      'https://picsum.photos/id/1050/400/400',
-      'https://picsum.photos/id/1051/400/400',
-    ],
-  ),
-  Candi(
-    name: 'Candi Kalasan',
-    location: 'Sleman, Yogyakarta',
-    description:
-        'Candi Kalasan adalah candi Buddha yang terletak di tepi jalan '
-        'raya Yogyakarta menuju Solo. Candi ini dibangun pada tahun 778 '
-        'Masehi, sebagaimana tertulis pada Prasasti Kalasan, untuk '
-        'memuliakan Dewi Tara. Menurut prasasti tersebut, pembangunannya '
-        'dilakukan atas permintaan raja Dinasti Syailendra kepada Rakai '
-        'Panangkaran dari Mataram Kuno. Bangunannya berdenah silang dengan '
-        'bilik utama yang dahulu berisi arca Tara. Candi ini dikenal karena '
-        'lapisan plester halus bernama vajralepa yang menutupi dindingnya, '
-        'dan karena ukiran kala-makara di atas pintunya yang sangat indah. '
-        'Hiasan di dinding luarnya menampilkan pola sulur dan arca-arca '
-        'kecil yang terpahat rapi. Karena usianya yang tua dan kehalusan '
-        'ukirannya, Candi Kalasan dianggap sebagai salah satu candi '
-        'Buddha terbaik di Jawa Tengah bagian selatan.',
-    built: 'Tahun 778 Masehi (abad ke-8)',
-    type: 'Candi Buddha',
-    imageAsset: 'images/kalasan.jpeg',
-    imageUrls: [
-      'https://picsum.photos/id/1052/400/400',
-      'https://picsum.photos/id/1053/400/400',
-      'https://picsum.photos/id/1054/400/400',
-    ],
-  ),
-  Candi(
-    name: 'Candi Lumbung',
-    location: 'Klaten, Jawa Tengah',
-    description:
-        'Candi Lumbung adalah candi Buddha yang berada di kawasan '
-        'Prambanan, tidak jauh dari Candi Sewu dan Candi Bubrah. Candi ini '
-        'dibangun pada abad ke-9, pada masa Kerajaan Mataram Kuno. Kompleks '
-        'ini terdiri atas satu candi induk di tengah yang dikelilingi '
-        'barisan candi perwara kecil yang tersusun rapi dalam pola '
-        'simetris. Nama Lumbung diberikan oleh masyarakat sekitar karena '
-        'bentuknya yang dianggap menyerupai tempat penyimpanan padi. '
-        'Candi induknya berdenah silang dan dihiasi ukiran pada dindingnya, '
-        'sementara candi-candi kecil di sekelilingnya pernah dipugar '
-        'sebagian. Letaknya yang berdekatan dengan candi-candi Buddha lain '
-        'di sekitar Prambanan menunjukkan bahwa kawasan ini dulu menjadi '
-        'pusat kegiatan keagamaan Buddha yang ramai.',
-    built: 'Abad ke-9',
-    type: 'Candi Buddha',
-    imageAsset: 'images/lumbung.jpeg',
-    imageUrls: [
-      'https://picsum.photos/id/1055/400/400',
-      'https://picsum.photos/id/1056/400/400',
-      'https://picsum.photos/id/1057/400/400',
-    ],
+    isFavorite: false,
   ),
   Candi(
     name: 'Candi Mendut',
     location: 'Magelang, Jawa Tengah',
-    description:
-        'Candi Mendut adalah candi Buddha yang terletak sekitar tiga '
-        'kilometer dari Candi Borobudur. Candi ini dibangun pada masa '
-        'Dinasti Syailendra sekitar tahun 800 Masehi. Mendut, Pawon, dan '
-        'Borobudur berada dalam satu garis lurus, dan para ahli menduga '
-        'ketiganya memiliki hubungan ritual. Di dalam bilik utama Mendut '
-        'terdapat tiga arca batu besar: Buddha yang duduk di tengah, '
-        'diapit Bodhisattwa Awalokiteswara dan Wajrapani. Dinding candi '
-        'dihiasi relief yang indah, antara lain relief pohon kalpataru, '
-        'kisah Hariti, dan cerita-cerita Jataka. Setiap tahun, rangkaian '
-        'perayaan Waisak dimulai dengan berjalan dari Candi Mendut ke '
-        'Candi Pawon, lalu berakhir di Candi Borobudur.',
-    built: 'Sekitar tahun 800 Masehi',
+    description: 'Candi Mendut adalah candi Buddha yang terletak di Desa Mendut, Kabupaten Magelang, Jawa Tengah, sekitar 3 kilometer dari Candi Borobudur. Dibangun pada masa pemerintahan Raja Indra dari dinasti Syailendra, Candi Mendut dikaitkan dengan prasasti Karangtengah tahun 824 Masehi, yang mengaitkannya dengan istilah "wenuwana" atau hutan bambu. Candi ini dibangun dengan batu bata dan lapisan batu alam, berdiri teguh di atas basement tinggi dengan pintu masuk menghadap barat-daya. Bangunan ini memiliki lorong mengelilingi tubuhnya, atap tiga tingkat, dan dihiasi dengan 48 stupa kecil di bagian puncaknya.',
+    built: 'Abad ke-9',
     type: 'Candi Buddha',
     imageAsset: 'images/mendut.jpeg',
     imageUrls: [
-      'https://picsum.photos/id/1058/400/400',
-      'https://picsum.photos/id/1059/400/400',
-      'https://picsum.photos/id/1060/400/400',
+      'https://media-cdn.tripadvisor.com/media/photo-o/08/8d/bd/dc/photo1jpg.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/08/30/84/fe/detail.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/07/9c/66/49/parc-du-monastere.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/07/64/89/fe/candi-mendut-temple.jpg',
     ],
+    isFavorite: false,
   ),
   Candi(
-    name: 'Candi Plaosan',
+    name: 'Candi Prambanan',
+    location: 'Daerah Istimewa Yogyakarta',
+    description: 'Candi Prambanan adalah candi Hindu terbesar di Indonesia, didirikan pada abad ke-9 Masehi dan dipersembahkan untuk Trimurti Hindu: Brahma, Wisnu, dan Siwa. Terletak di Daerah Istimewa Yogyakarta dan Jawa Tengah, kompleks candi ini mencakup Bokoharjo, Prambanan, Sleman, Yogyakarta, serta Tlogo, Prambanan, Klaten, Jawa Tengah. Candi ini termasuk Situs Warisan Dunia UNESCO, memiliki arsitektur tinggi dan ramping, dengan candi Siwa sebagai pusat dengan ketinggian 47 meter. Dibangun mulai sekitar tahun 850 Masehi oleh Rakai Pikatan dan dikembangkan oleh Balitung Maha Sambu dari kerajaan Medang Mataram, Prambanan menjadi daya tarik wisatawan global.',
+    built: 'Abad ke-9',
+    type: 'Candi Hindu',
+    imageAsset: 'images/prambanan.jpeg',
+    imageUrls: [
+      'http://media-cdn.tripadvisor.com/media/photo-o/11/d3/f4/02/main-prambanan-temple.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/11/d3/f3/fb/main-prambanan-temple.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/21/b5/prambanan-diwaktu-malam.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/11/cd/21/a1/prambanan-yang-luas-dan.jpg',
+    ],
+    isFavorite: false,
+  ),
+  Candi(
+    name: 'Candi Lumbung',
     location: 'Klaten, Jawa Tengah',
-    description:
-        'Candi Plaosan adalah kompleks candi Buddha yang terdiri atas '
-        'dua kelompok, yaitu Plaosan Lor dan Plaosan Kidul. Kompleks ini '
-        'dibangun pada abad ke-9 pada masa Rakai Pikatan, dan sering '
-        'disebut sebagai candi kembar karena Plaosan Lor memiliki dua '
-        'candi utama yang bentuknya hampir sama. Menurut tradisi, candi ini '
-        'dibangun sebagai wujud cinta Rakai Pikatan yang beragama Hindu '
-        'kepada permaisurinya, Pramodhawardhani, yang beragama Buddha. '
-        'Banyak ukiran dan arca di sini yang menggambarkan tokoh '
-        'Bodhisattwa dengan gaya halus. Di sekeliling candi utama '
-        'terdapat ratusan stupa kecil dan candi perwara. Karena letaknya '
-        'dikelilingi sawah, Candi Plaosan juga dikenal sebagai tempat '
-        'yang tenang dan indah untuk dikunjungi.',
+    description: 'Candi Lumbung, bagian Taman Wisata Candi Prambanan, terletak di Jawa Tengah, Kabupaten Klaten. Dibangun pada abad ke-9 saat Kerajaan Mataram Kuno, candi ini terdiri dari satu candi induk dan 16 candi perwara. Candi induk memiliki denah poligon bersisi 20, luas 350 m2, dan menghadap ke timur, meskipun sekarang tidak lengkap karena sejumlah batu hilang. Penelitian modern oleh J. Dumarçay juga mencatat perubahan struktur candi ini.',
     built: 'Abad ke-9',
     type: 'Candi Buddha',
-    imageAsset: 'images/plaosan.jpeg',
+    imageAsset: 'images/lumbung.jpeg',
     imageUrls: [
-      'https://picsum.photos/id/1061/400/400',
-      'https://picsum.photos/id/1062/400/400',
-      'https://picsum.photos/id/1063/400/400',
+      'https://media-cdn.tripadvisor.com/media/photo-o/28/11/e1/80/lumbung-temple.jpg',
+      'http://media-cdn.tripadvisor.com/media/photo-o/28/11/e1/73/lumbung-temple.jpg',
+      'http://media-cdn.tripadvisor.com/media/photo-o/28/11/e1/21/lumbung-temple.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/28/11/e1/33/lumbung-temple.jpg',
     ],
-  ),
-  Candi(
-    name: 'Candi Sari',
-    location: 'Sleman, Yogyakarta',
-    description:
-        'Candi Sari adalah candi Buddha yang terletak tidak jauh dari '
-        'Candi Kalasan, di Kabupaten Sleman. Candi ini dibangun sekitar '
-        'abad ke-8 sampai ke-9 dan berbentuk persegi panjang dengan dua '
-        'lantai. Di dalamnya terdapat tiga ruangan, dan para ahli menduga '
-        'bangunan ini dahulu berfungsi sebagai tempat tinggal atau '
-        'tempat belajar para biksu, bukan sekadar tempat pemujaan. '
-        'Dinding luarnya dihiasi relief arca Bodhisattwa, dewa-dewi, dan '
-        'kinnara yang tersusun rapi dalam relung. Atap candi dahulu '
-        'dihiasi sembilan stupa kecil yang kini sudah tidak lengkap. '
-        'Keberadaan lantai kayu di tingkat atas, yang kini sudah hilang, '
-        'menjadi bukti bahwa candi ini pernah dipakai sebagai ruang hunian.',
-    built: 'Abad ke-8 sampai ke-9',
-    type: 'Candi Buddha',
-    imageAsset: 'images/sari.jpeg',
-    imageUrls: [
-      'https://picsum.photos/id/1064/400/400',
-      'https://picsum.photos/id/1065/400/400',
-      'https://picsum.photos/id/1066/400/400',
-    ],
+    isFavorite: false,
   ),
   Candi(
     name: 'Candi Sewu',
     location: 'Klaten, Jawa Tengah',
-    description:
-        'Candi Sewu adalah kompleks candi Buddha terbesar kedua di Jawa '
-        'Tengah setelah Borobudur. Namanya berarti seribu, meskipun jumlah '
-        'candi di dalamnya sebenarnya sekitar 249 bangunan. Kompleks ini '
-        'terdiri atas satu candi induk di tengah yang dikelilingi barisan '
-        'candi perwara dalam pola mandala yang teratur. Berdasarkan Prasasti '
-        'Manjusrigrha, candi ini dibangun pada akhir abad ke-8 dan diperluas '
-        'pada masa berikutnya. Di pintu masuknya berdiri pasangan arca '
-        'penjaga raksasa atau dwarapala yang masih bisa dilihat hingga '
-        'sekarang. Candi Sewu dibangun tidak jauh dari Candi Prambanan, '
-        'sehingga kawasan ini menjadi bukti bahwa umat Hindu dan Buddha '
-        'dapat hidup berdampingan pada masa itu.',
-    built: 'Akhir abad ke-8',
+    description: 'Candi Sewu adalah kompleks candi Buddha yang didirikan pada abad ke-8 Masehi dan terletak sekitar delapan ratus meter di utara Candi Prambanan. Menjadi kompleks candi Buddha terbesar kedua di Jawa Tengah setelah Candi Borobudur, Candi Sewu memiliki nama asli Manjusri grha (Rumah Manjusri), dan usianya lebih tua daripada Candi Borobudur dan Prambanan. Walaupun semula memiliki 249 candi, masyarakat setempat menyebutnya "Sewu" yang dalam bahasa Jawa berarti seribu, merujuk pada legenda Loro Jonggrang.',
+    built: 'Abad ke-8',
     type: 'Candi Buddha',
     imageAsset: 'images/sewu.jpeg',
     imageUrls: [
-      'https://picsum.photos/id/1067/400/400',
-      'https://picsum.photos/id/1068/400/400',
-      'https://picsum.photos/id/1069/400/400',
+      'https://media-cdn.tripadvisor.com/media/photo-o/16/29/03/ec/dsc-5480-largejpg.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/13/9a/31/8e/caption.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/14/78/fd/64/dsc-0395-largejpg.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/16/10/f6/55/20181224-104447-largejpg.jpg',
     ],
+    isFavorite: false,
+  ),
+  Candi(
+    name: 'Candi Kalasan',
+    location: 'Daerah Istimewa Yogyakarta',
+    description: 'Candi Kalasan, Cagar Budaya Buddha di Yogyakarta, memiliki 52 stupa dan berlokasi di Desa Tirtomartani. Terletak sekitar 2 km dari Candi Prambanan, candi ini awalnya satu-satunya struktur yang ditemukan di situs ini, tetapi penggalian lebih lanjut mengungkap bangunan pendukung lain dan tiga candi kecil di luar bangunan utama. Prasasti Kalasan tahun 778 mengungkapkan pendirian bangunan suci untuk menghormati Bodhisattva wanita, Tarabhawana, oleh Maharaja Tejapurnapana Panangkaran dari keluarga Syailendra. Candi ini dianggap sebagai bukti keberadaan Wangsa Syailendra. Menurut penafsiran ahli, Candi Kalasan adalah gabungan Buddhisme dan Hinduisme, mengalami tiga kali perbaikan. Relief Bodhisattva dan atap berlapis tiga menjadi ciri khas candi ini.',
+    built: 'Abad ke-8',
+    type: 'Candi Buddha',
+    imageAsset: 'images/kalasan.jpeg',
+    imageUrls: [
+      'https://media-cdn.tripadvisor.com/media/photo-o/11/49/7f/c6/img-20171102-100329-largejpg.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/0d/d1/15/1b/papan-nama-peringatan.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/0d/b4/4a/9d/caption.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/0d/bd/3b/88/20161127-152738-largejpg.jpg',
+    ],
+    isFavorite: false,
+  ),
+  Candi(
+    name: 'Candi Sari',
+    location: 'Daerah Istimewa Yogyakarta',
+    description: 'Candi Sari, atau Candi Bendah, adalah candi Buddha yang terletak di Desa Tirtomartani, Sleman, Yogyakarta. Dibangun pada abad ke-8 dan ke-9 saat Kerajaan Mataram Kuno, candi ini memiliki 9 stupa di bagian atasnya yang tersusun dalam 3 deretan sejajar, mirip dengan Candi Borobudur. Bangunannya mirip dengan Candi Plaosan dan memiliki ruangan bertingkat dua di bawah stupa, mungkin digunakan untuk meditasi biksu. Dulu digunakan sebagai Vihara Buddha untuk belajar dan mengajar para biksu.',
+    built: 'Abad ke-8',
+    type: 'Candi Buddha',
+    imageAsset: 'images/sari.jpeg',
+    imageUrls: [
+      'http://media-cdn.tripadvisor.com/media/photo-o/0d/7a/26/27/p-20150104-102350-hdr.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/17/e4/b5/32/komplek-candi-sari.jpg',
+      'http://media-cdn.tripadvisor.com/media/photo-o/13/46/0c/0e/cube.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/13/46/09/6d/high-wall.jpg',
+    ],
+    isFavorite: false,
+  ),
+  Candi(
+    name: 'Candi Plaosan',
+    location: 'Klaten, Jawa Tengah',
+    description: 'Candi Plaosan adalah kompleks percandian di Desa Bugisan, Jawa Tengah. Terdiri dari Candi Plaosan Lor dan Candi Plaosan Kidul, kompleks ini terletak sekitar 1 km dari Candi Sewu atau Candi Prambanan. Bangunan-bangunan dengan stupa, arca Buddha, dan candi perwara menandakan karakter Buddha. Dibangun pada abad ke-9 oleh Raja Rakai Pikatan dan Sri Kahulunan dari Kerajaan Medang, candi ini dahulu dikelilingi oleh parit persegi panjang yang sebagian masih terlihat di timur dan barat candi.',
+    built: 'Abad ke-9',
+    type: 'Candi Buddha',
+    imageAsset: 'images/plaosan.jpeg',
+    imageUrls: [
+      'https://media-cdn.tripadvisor.com/media/photo-o/15/64/fe/2c/candi-plaosan-nan-exotic.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/0b/9b/16/eb/candi-plaosan-merupakan.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/04/d1/be/8d/candi-plaosan.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/28/14/e5/d4/caption.jpg',
+    ],
+    isFavorite: false,
+  ),
+  Candi(
+    name: 'Candi Singosari',
+    location: 'Malang, Jawa Timur',
+    description: 'Candi Singasari adalah situs Hindu-Buddha bersejarah dari Kerajaan Singasari, terletak di Singosari, Malang, Jawa Timur, Indonesia, sekitar 10 km dari Kota Malang. Candi ini merupakan tempat pemujaan Raja Kertanegara, raja terakhir Singasari, yang wafat pada 1292. Terletak di lembah di antara Pegunungan Tengger dan Gunung Arjuno, candi ini dibangun dengan metode menumpuk batu andesit dan diukir dari atas ke bawah.',
+    built: 'Abad ke-13',
+    type: 'Candi Hindu-Buddha',
+    imageAsset: 'images/singosari.jpeg',
+    imageUrls: [
+      'https://media-cdn.tripadvisor.com/media/photo-o/06/c9/d4/f2/candi-singosari.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/1a/ca/37/49/candi-cungkup-candirenggo.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/15/a2/c0/8d/dvarapala.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/15/a2/c0/88/singosari-temple-kala.jpg',
+    ],
+    isFavorite: false,
+  ),
+  Candi(
+    name: 'Candi Jago',
+    location: 'Malang, Jawa Timur',
+    description: 'Candi Jago, didirikan oleh Kerajaan Singhasari abad ke-13 untuk menghormati Raja Wisnuwardhana, terletak di Desa Tumpang, Malang, Jawa Timur. Candi ini menganut agama Buddha Tatrayana dan memiliki arca khas amoghapasa yang mewakili Raja Wisnuwarddhana. Bangunan candi ini, terbuat dari batu andesit, memiliki bagian atas yang tersisa sebagian karena diterjang petir. Relief Kunjarakarna dan Pancatantra dapat ditemukan di sini. Arca Manjusri yang awalnya berada di candi ini, kini tersimpan di Museum Nasional.',
+    built: 'Abad ke-13',
+    type: 'Candi Buddha',
+    imageAsset: 'images/jago.jpeg',
+    imageUrls: [
+      'https://media-cdn.tripadvisor.com/media/photo-o/08/75/ab/a3/photo2jpg.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/08/75/ab/a1/photo0jpg.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/05/60/f7/12/jhago-temple.jpg',
+      'https://media-cdn.tripadvisor.com/media/photo-o/05/60/f6/e5/jhago-temple.jpg',
+    ],
+    isFavorite: false,
   ),
 ];

@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 class AuthProvider extends ChangeNotifier {
   bool _isSignedIn = false;
   String _username = '';
+
   bool get isSignedIn => _isSignedIn;
   String get username => _username;
 

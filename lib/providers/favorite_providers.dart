@@ -1,31 +1,32 @@
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 class FavoriteProvider extends ChangeNotifier {
-  // Set digunakan untuk menampung kumpulan nama candi unik (menolak nama ganda)
   final Set<String> _favorites = {};
 
-  // Getter untuk mengambil jumlah total favorit untuk ditampilkan di ProfileScreen
+  // Getter untuk mengambil Set nama-nama candi favorit
+  Set<String> get favorites => _favorites;
+
+  // Getter jumlah favorit
   int get count => _favorites.length;
 
-  // Fungsi untuk memeriksa apakah candi tertentu sudah difavoritkan atau belum
-  bool isFavorite(String name) => _favorites.contains(name);
+  // Cek apakah candi sudah difavoritkan
+  bool isFavorite(String candiName) {
+    return _favorites.contains(candiName);
+  }
 
-  // Fungsi untuk menambah atau menghapus status favorit candi
-  void toggle(String name) {
-    if (_favorites.contains(name)) {
-      _favorites.remove(name);
+  // Toggle tambah/hapus favorit
+  void toggle(String candiName) {
+    if (_favorites.contains(candiName)) {
+      _favorites.remove(candiName);
     } else {
-      _favorites.add(name);
+      _favorites.add(candiName);
     }
-    // Memberi tahu semua widget pendengar (yang menggunakan .watch) agar build ulang
     notifyListeners();
   }
 
-  // =========================================================================
-  // LATIHAN MANDIRI: Menambahkan fungsi untuk menghapus seluruh daftar favorit
-  // =========================================================================
+  // Clear semua favorit saat sign out
   void clearAll() {
-    _favorites.clear(); // Mengosongkan data di dalam Set
-    notifyListeners(); // Wajib dipanggil agar UI di ProfileScreen ikut ter-refresh menjadi 0
+    _favorites.clear();
+    notifyListeners();
   }
 }

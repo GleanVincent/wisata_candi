@@ -2,55 +2,37 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:wisata_candi/data/candi_data.dart';
 import 'package:wisata_candi/providers/favorite_providers.dart';
-import 'package:wisata_candi/screens/detail_screens.dart';
+import 'package:wisata_candi/widgets/item_card.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({super.key});
-
+ 
   @override
   Widget build(BuildContext context) {
-    final favoriteProvider = context.watch<FavoriteProvider>();
-    final favorites = candiList
-        .where((candi) => favoriteProvider.isFavorite(candi.name))
+    final favoriteNames = context.watch<FavoriteProvider>().favorites;
+
+    final favoriteCandis = candiList
+        .where((candi) => favoriteNames.contains(candi.name))
         .toList();
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Candi Favorit')),
-      body: favorites.isEmpty
-          ? const Center(child: Text('Belum ada candi favorit.'))
-          : ListView.builder(
-              padding: const EdgeInsets.all(16),
-              itemCount: favorites.length,
+      body: favoriteCandis.isEmpty
+          ? const Center(
+              child: Text(
+                'Belum ada candi favorit',
+                style: TextStyle(fontSize: 16),
+              ),
+            )
+          : GridView.builder(
+              padding: const EdgeInsets.all(8),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 8,
+                mainAxisSpacing: 8,
+              ),
+              itemCount: favoriteCandis.length,
               itemBuilder: (context, index) {
-                final candi = favorites[index];
-                return Card(
-                  clipBehavior: Clip.antiAlias,
-                  child: ListTile(
-                    leading: Image.asset(
-                      candi.imageAsset,
-                      width: 56,
-                      height: 56,
-                      fit: BoxFit.cover,
-                    ),
-                    title: Text(candi.name),
-                    subtitle: Text(candi.location),
-                    trailing: IconButton(
-                      tooltip: 'Hapus dari favorit',
-                      icon: const Icon(Icons.favorite, color: Colors.red),
-                      onPressed: () {
-                        context.read<FavoriteProvider>().toggle(candi.name);
-                      },
-                    ),
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => DetailScreen(candi: candi),
-                        ),
-                      );
-                    },
-                  ),
-                );
+                return ItemCard(candi: favoriteCandis[index]);
               },
             ),
     );
