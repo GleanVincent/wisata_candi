@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:wisata_candi/providers/favorite_providers.dart';
 import 'package:wisata_candi/providers/auth_providers.dart';
 import 'package:wisata_candi/screens/home_screens.dart'; // Tambahkan import ini!
-
+import 'package:wisata_candi/screens/search_screens.dart'; // Tambahkan import ini!
 void main() {
   runApp(
     MultiProvider(
@@ -40,7 +40,7 @@ class MyApp extends StatelessWidget {
         ).copyWith(primary: Colors.deepPurple, surface: Colors.deepPurple[50]),
         useMaterial3: true,
       ),
-      home: const HomeScreen(),
+      home: const SearchScreen(),
     );
   }
 }
