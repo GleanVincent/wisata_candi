@@ -1,50 +1,62 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:wisata_candi/providers/auth_providers.dart';
 import 'package:wisata_candi/providers/favorite_providers.dart';
+import 'package:wisata_candi/providers/auth_providers.dart';
 import 'package:wisata_candi/screens/sign_in_screen.dart';
 
-class ProfileScreen extends StatefulWidget {
+class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 
   @override
-  State<ProfileScreen> createState() => _ProfileScreenState();
-}
-
-class _ProfileScreenState extends State<ProfileScreen> {
-  String fullName = 'qilfou';
-
-  @override
   Widget build(BuildContext context) {
-    // Membaca data dari Provider di dalam method build
-    final favoriteCount = context.watch<FavoriteProvider>().count;
+    // 1. Mendengarkan seluruh perubahan data dari masing-masing Provider
     final auth = context.watch<AuthProvider>();
+    final favoriteCount = context.watch<FavoriteProvider>().count;
 
     return Scaffold(
+      // Properti ini membuat body naik ke atas melewati batas AppBar sehingga visual background ungu menyatu sempurna
+      extendBodyBehindAppBar: true,
+
+      // Kustomisasi AppBar agar tombol dan teksnya berwarna putih terang
+      appBar: AppBar(
+        title: const Text('Profil Pengguna'),
+        backgroundColor: Colors.transparent, // Transparan agar warna Container ungu memancar dari belakang
+        elevation: 0,
+        iconTheme: const IconThemeData(
+          color: Colors.white,
+        ), // Membuat tombol panah back menjadi PUTIH
+        titleTextStyle: const TextStyle(
+          color:
+              Colors.white, // Membuat judul menjadi PUTIH agar terlihat jelas
+          fontSize: 20,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
       body: Stack(
         children: [
-          // Background ungu bagian atas
+          // Latar belakang balok warna ungu di area atas profil
           Container(
-            height: 200,
+            height: 220, // Ketinggian disesuaikan untuk mengakomodasi wilayah AppBar kustom
             width: double.infinity,
             color: Colors.deepPurple,
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          SingleChildScrollView(
             child: Column(
               children: [
-                // Header Foto Profil
+                // 2. Membuat widget untuk menampilkan foto profil bulat
                 Align(
                   alignment: Alignment.topCenter,
                   child: Padding(
-                    padding: const EdgeInsets.only(top: 200 - 50),
+                    padding: const EdgeInsets.only(
+                      top: 130, // Jarak disesuaikan ulang agar lingkaran foto pas menggantung di batas ungu
+                    ),
                     child: Stack(
                       alignment: Alignment.bottomRight,
                       children: [
                         Container(
                           decoration: BoxDecoration(
                             border: Border.all(
-                              color: Colors.deepPurple,
+                              color: Colors.white, // Border diganti PUTIH agar kontras dengan warna dasar ungu
                               width: 2,
                             ),
                             shape: BoxShape.circle,
@@ -57,11 +69,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
                           ),
                         ),
                         if (auth.isSignedIn)
-                          IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.camera_alt,
-                              color: Colors.deepPurple[50],
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.deepPurple,
+                              shape: BoxShape.circle,
+                            ),
+                            child: const Padding(
+                              padding: EdgeInsets.all(4.0),
+                              child: Icon(
+                                Icons.camera_alt,
+                                color: Colors.white,
+                                size: 20,
+                              ),
                             ),
                           ),
                       ],
@@ -70,7 +89,8 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 ),
                 const SizedBox(height: 20),
 
-                // Baris 1: Pengguna (Username dari AuthProvider)
+                // 3. Menampilkan bagian informasi profil menggunakan data Provider
+                // Latihan Mandiri 1: Mengambil nilai username langsung dari AuthProvider
                 Row(
                   children: [
                     SizedBox(
@@ -91,17 +111,15 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     Expanded(
                       child: Text(
-                        ': ${auth.isSignedIn ? auth.username : ''}',
+                        ': ${auth.isSignedIn ? auth.username : 'Belum Sign In'}',
                         style: const TextStyle(fontSize: 18),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 4),
-                Divider(color: Colors.deepPurple[100]),
-                const SizedBox(height: 4),
+                const SizedBox(height: 8),
+                const Divider(color: Colors.grey, thickness: 0.5),
 
-                // Baris 2: Nama
                 Row(
                   children: [
                     SizedBox(
@@ -122,18 +140,21 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     Expanded(
                       child: Text(
-                        ': ${auth.isSignedIn ? fullName : ''}',
+                        ': ${auth.isSignedIn ? auth.username : ''}',
                         style: const TextStyle(fontSize: 18),
                       ),
                     ),
-                    if (auth.isSignedIn) const Icon(Icons.edit),
+                    if (auth.isSignedIn)
+                      IconButton(
+                        onPressed: () => debugPrint('Icon edit ditekan'),
+                        icon: const Icon(Icons.edit),
+                      ),
                   ],
                 ),
-                const SizedBox(height: 4),
-                Divider(color: Colors.deepPurple[100]),
-                const SizedBox(height: 4),
+                const SizedBox(height: 8),
+                const Divider(color: Colors.grey, thickness: 0.5),
 
-                // Baris 3: Favorit (Membaca jumlah favorit dari FavoriteProvider)
+                // Menampilkan jumlah total favorit candi secara real-time dari FavoriteProvider
                 Row(
                   children: [
                     SizedBox(
@@ -154,35 +175,47 @@ class _ProfileScreenState extends State<ProfileScreen> {
                     ),
                     Expanded(
                       child: Text(
-                        ': ${favoriteCount > 0 ? favoriteCount : 0}',
+                        ': $favoriteCount',
                         style: const TextStyle(fontSize: 18),
                       ),
                     ),
                   ],
                 ),
+
+                // 4. Membuat bagian tombol aksi Sign Out / Sign In dinamis
                 const SizedBox(height: 4),
-                Divider(color: Colors.deepPurple[100]),
+                const Divider(color: Colors.grey, thickness: 0.5),
                 const SizedBox(height: 20),
 
-                // Tombol Sign Out / Sign In
                 auth.isSignedIn
                     ? TextButton(
                         onPressed: () {
-                          context.read<AuthProvider>().signOut();
+                          // Latihan Mandiri 2 & 3: Saat Sign Out, hapus semua favorit & ubah status autentikasi
                           context.read<FavoriteProvider>().clearAll();
+                          context.read<AuthProvider>().signOut();
                         },
-                        child: const Text('Sign Out'),
+                        child: const Text(
+                          'Sign Out',
+                          style: TextStyle(color: Colors.red, fontSize: 16),
+                        ),
                       )
                     : TextButton(
                         onPressed: () {
+                          // Berpindah ke halaman SignInScreen ketika tombol Sign In ditekan
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => const SignInScreen(),
+                              builder: (_) => const SignInScreen(),
                             ),
                           );
                         },
-                        child: const Text('Sign In'),
+                        child: const Text(
+                          'Sign In',
+                          style: TextStyle(
+                            color: Colors.deepPurple,
+                            fontSize: 16,
+                          ),
+                        ),
                       ),
               ],
             ),
